@@ -35,7 +35,7 @@ def A_Star(graph, source, destination, heuristic):
                 f_score = tentative_g + heuristic(neighbor)
                 heapq.heappush(open_set, (f_score, neighbor))
 
-    # Reconstruct the path
+   
     path = []
     current = destination
     while current is not None:
