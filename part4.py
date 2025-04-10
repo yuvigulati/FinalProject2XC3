@@ -32,6 +32,7 @@ def random_heuristic(destination_id, coords):
     return {node: random.uniform(0, 10000) for node in coords}
 
 # A* Algorithm
+# === A* ALGORITHM (FIXED FOR PART 3.1) ===
 def A_Star(graph, source, destination, heuristic):
     g_scores = {node: float('inf') for node in graph}
     f_scores = {node: float('inf') for node in graph}
@@ -56,7 +57,10 @@ def A_Star(graph, source, destination, heuristic):
                 g_scores[v] = tentative_g
                 f_scores[v] = tentative_g + heuristic[v]
                 heapq.heappush(queue, (f_scores[v], v))
-    return g_scores, prev, visited
+
+    path = reconstruct_path(prev, source, destination)
+    return prev, path
+
 
 # Path reconstruction
 def reconstruct_path(prev, source, destination):
